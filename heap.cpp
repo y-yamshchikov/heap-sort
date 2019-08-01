@@ -7,6 +7,7 @@ size_t iRightChild(size_t iRoot);
 size_t iParent(size_t iChild);
 void siftDown(int *A, size_t iRoot, size_t size);
 void heapify(int *A, size_t size);
+void heap_sort(int *A, size_t size);
 
 int main(int argc, char *argv[])
 {
@@ -16,6 +17,9 @@ int main(int argc, char *argv[])
 	print_array(A, size);
 	heapify(A, size);
 	print_array(A, size);
+	heap_sort(A, size);
+	print_array(A, size);
+
 
 	return 0;
 }
@@ -48,6 +52,15 @@ void heapify(int *A, size_t size)
 			return;
 		}
 		iNode--;
+	}
+}
+
+void heap_sort(int *A, size_t size)
+{
+	for (size_t i = size-1; i >=1; --i)
+	{
+		swap(A[0], A[i]);
+		siftDown(A, 0, i/*index to size conversion*/);
 	}
 }
 
