@@ -7,6 +7,7 @@ void heapify(int *A, size_t size);
 void siftDown(int *A, size_t iRoot, size_t size);
 void swap(int &A, int &B);
 void print_array(int *A, size_t size);
+void heap_sort(int *A, size_t size);
 
 int main(int argc, char *argv[])
 {
@@ -15,7 +16,7 @@ int main(int argc, char *argv[])
 	size_t size = sizeof(A)/sizeof(A[0]);
 
 	print_array(A, size);
-	heapify(A, size);
+	heap_sort(A, size);
 	print_array(A, size);
 
 	return 0;
@@ -79,6 +80,16 @@ void siftDown(int *A, size_t iRoot, size_t size)
 		{
 			return;
 		}
+	}
+}
+
+void heap_sort(int *A, size_t size)
+{
+	heapify(A, size);
+	for (size_t i = size-1; i > 0; --i)
+	{
+		swap(A[0], A[i]);
+		siftDown(A, 0, i);
 	}
 }
 
